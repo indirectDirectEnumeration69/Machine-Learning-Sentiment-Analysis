@@ -33,7 +33,8 @@ Dataset url:
 Positive & Negative words url:
 
 Requires:
-- minimum 22gb ram (24 gb of ram preferable).
+- minimum 22gb ram (24 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnables being used so less ram required however will affect result accuracy.
+
 -
 -
 
