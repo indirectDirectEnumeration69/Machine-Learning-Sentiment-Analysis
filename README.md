@@ -32,3 +32,13 @@ Dataset url:
 
 Positive & Negative words url:
 
+Requires:
+- minimum 22gb ram (24 gb of ram necessary).
+-
+-
+
+Matlabs Addon:
+
+-
+-
+-
