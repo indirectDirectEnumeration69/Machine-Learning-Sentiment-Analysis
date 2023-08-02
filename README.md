@@ -20,6 +20,11 @@ Training results:
 
 
 
+Notes: 
+
+- Adding attention layer for new results and modifiying attention layer.
+- Using Gru layers and standard LSTM layers.
+
 
 
 Dataset url:
