@@ -59,7 +59,7 @@ negativeCounts = sum(documentTfidf(:, negativeMatches), 2);
 positiveCounts = sum(documentTfidf(:, positiveMatches), 2);
 
 % Train Word2Vec model
-emb = trainWordEmbedding(documentsCellArray); %emb now represents the word2vector documentcell arrays witrh ngrams and word frequencys which is 
+emb = trainWordEmbedding(documentsCellArray); %emb now represents the word2vector documentcell arrays with ngrams and word frequencys which is 
                                               % used in sequences with the additional original documents variable.
 
 positiveCounts = positiveCounts(:)';  % transpose positiveCounts to a row vector
