@@ -95,7 +95,7 @@ idxTest = cvp.test;
 disp(size(idxTemp));
 disp(size(idxTest));
 % Further split the training data into actual training and validation sets
-cvp2 = cvpartition(length(sequences(idxTemp)), 'HoldOut', 0.2); 64% for training. 64% training, 16% validation,20% testing.
+cvp2 = cvpartition(length(sequences(idxTemp)), 'HoldOut', 0.2); % 64% for training. 64% training, 16% validation,20% testing.
 idxTrain = idxTemp(cvp2.training);
 idxValidation = idxTemp(cvp2.test);
 disp(size(idxTrain));
