@@ -4,9 +4,9 @@ data = readtable(filename, 'Delimiter', ',', 'VariableNamingRule', 'preserve');
 
 % Read positive and negative words
 wordListFile = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\Positive and Negative Word List.xlsx'; %replace my word list file path with your own.
-wordList = readtable(wordListFile, 'VariableNamingRule', 'preserve');
-positiveWords = string(wordList{:,3}); % Positive words are in the second column
-negativeWords = string(wordList{:,2}); % Negative words are in the third column
+wordList = readtable(wordListFile, 'VariableNamingRule', 'preserve'); %preserve variables
+positiveWords = string(wordList{:,3}); % Positive words are in the third column
+negativeWords = string(wordList{:,2}); % Negative words are in the second column
 
 % Extract necessary columns
 data = data(:,{'textID','text','sentiment'});
@@ -22,8 +22,8 @@ documents = eraseTags(documents); % Remove HTML tags
 documents = lower(documents); % Convert to lowercase
 disp(documents(1:5)); % Check the documents data at five index positions.
 documentsCellArray = documents;
-documentsCellArray = addNGrams(documentsCellArray, 3); 
-documentsCellArray = tokenizedDocument(documentsCellArray);
+documentsCellArray = addNGrams(documentsCellArray, 3);  % apply ngrams to the document
+documentsCellArray = tokenizedDocument(documentsCellArray); % tokenize the document.
 
 
 % Data Augmentation with synonym replacement
