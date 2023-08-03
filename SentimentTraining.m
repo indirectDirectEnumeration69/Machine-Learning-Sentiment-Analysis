@@ -190,7 +190,7 @@ function augmentedDocs = augmentData(docs, negativeWords, positiveWords)
         end  
         augmentedDocs = [augmentedDocs; tokenizedDocument(strjoin(docTokens))];
 
-    end %replacing positive words with other positive words in the sentence to get more robust accuracy results, same for neagtive words.
+    end %replacing positive words with other positive words in the sentence to get more robust accuracy results, same for negative words.
 end % for example : i [like] dogs will be replaced with, i [love] dogs and vice versa for negative words.
 
 function synonyms = getSynonyms(word, positiveWords, negativeWords)
