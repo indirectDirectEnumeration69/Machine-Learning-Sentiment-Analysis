@@ -162,7 +162,7 @@ function embeddings = index2embedding(emb, indices)
     end
 end
 
-% Helper function to append counts to each word vector
+% Helper function to append counts to each word vector and term freq as a additional feature to each word vector in the c matrix.
 function c = appendCounts(c, pos, neg, tfidfFeatures)
     pos_vec = repmat(pos, size(c, 1), 1);
     neg_vec = repmat(neg, size(c, 1), 1);
