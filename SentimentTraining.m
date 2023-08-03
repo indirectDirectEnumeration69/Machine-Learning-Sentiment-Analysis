@@ -1,9 +1,9 @@
 %Read CSV file
-filename = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\test.csv'; %replace dataset file path with your own.
+filename = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\test.csv'; %replace dataset file path with your own path location.
 data = readtable(filename, 'Delimiter', ',', 'VariableNamingRule', 'preserve');
 
 % Read positive and negative words
-wordListFile = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\Positive and Negative Word List.xlsx'; %replace my word list file path with your own.
+wordListFile = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\Positive and Negative Word List.xlsx'; %replace my word list file path with your own path location.
 wordList = readtable(wordListFile, 'VariableNamingRule', 'preserve'); %preserve variables
 positiveWords = string(wordList{:,3}); % Positive words are in the third column
 negativeWords = string(wordList{:,2}); % Negative words are in the second column
