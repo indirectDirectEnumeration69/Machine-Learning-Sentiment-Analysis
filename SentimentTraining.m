@@ -9,7 +9,7 @@ positiveWords = string(wordList{:,3}); % Positive words are in the third column
 negativeWords = string(wordList{:,2}); % Negative words are in the second column
 
 % Extract necessary columns
-data = data(:,{'textID','text','sentiment'});
+data = data(:,{'textID','text','sentiment'}); % can include more for more data but im after the specific columns related to the text sentiment.
 
 % Encode sentiment as numerical values
 data.sentiment = categorical(data.sentiment);
