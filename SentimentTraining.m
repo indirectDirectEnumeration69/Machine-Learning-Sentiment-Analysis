@@ -34,7 +34,7 @@ documentsCellArray = erasePunctuation(documentsCellArray);
 documentsCellArray = removeStopWords(documentsCellArray);
 documentsCellArray = normalizeWords(documentsCellArray);
 
-% Create TF-IDF matrix
+% Create The TF-IDF matrix
 documentTfidf = tfidf(documentsCellArray);
 
 % Normalize Features
@@ -43,7 +43,7 @@ documentTfidf = normalize(documentTfidf, 'center', 'mean', 'scale', 'std');
 % Tokenize the documents
 tokens = tokenizedDocument(documentsCellArray);
 
-% Create a vocabulary
+% Create a vocabulary set
 vocab = unique(tokens.Vocabulary);
 
 % Find which columns in TF-IDF matrix correspond to positive and negative words
@@ -117,7 +117,7 @@ disp(size(YValidation));
 disp(size(XTest));
 disp(size(YTest));
 
-% Save the preprocessed data
+% Save the preprocessed data, 7.3v for file size limits. 
 save('preprocessedData.mat', 'XTrain', 'YTrain', 'XValidation', 'YValidation', 'XTest', 'YTest', 'emb', '-v7.3');
 
 % Helper function for finding word index in embedding
@@ -148,7 +148,7 @@ end
 
 function cellArray = tokenizedDocument2CellArray(docArray)
     cellArray = docArray; %input as output due to correct format, can be used if we wish to perform more tokenization formatting steps.
-end
+end                        
 
 % Helper function to convert indices to word embeddings
 function embeddings = index2embedding(emb, indices)
