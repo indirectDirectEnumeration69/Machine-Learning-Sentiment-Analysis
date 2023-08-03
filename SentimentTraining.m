@@ -1,6 +1,6 @@
 %Read CSV file
 filename = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\test.csv'; %replace dataset file path with your own path location.
-data = readtable(filename, 'Delimiter', ',', 'VariableNamingRule', 'preserve');
+data = readtable(filename, 'Delimiter', ',', 'VariableNamingRule', 'preserve'); %preserve to prevent matlabs formatting/modifying column names.
 
 % Read positive and negative words
 wordListFile = 'C:\Users\ernie\OneDrive\Desktop\Machine learning\Positive and Negative Word List.xlsx'; %replace my word list file path with your own path location.
