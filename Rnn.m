@@ -1,53 +1,61 @@
-% Load the preprocessed data
+% Loading the preprocessed data
 load('preprocessedData.mat');
+
+% Displaying NaN locations in the training, validation, and test data
+displayNaNLocations(XTrain, 'XTrain');
+displayNaNLocations(XValidation, 'XValidation');
+displayNaNLocations(XTest, 'XTest');
+
+% Now replacing the NaN values with the mean
+XTrain = replaceNaNWithMean(XTrain);
+XValidation = replaceNaNWithMean(XValidation);
+XTest = replaceNaNWithMean(XTest);
+
+% Checking for NaN values in the data
+if any(cellfun(@(x) any(isnan(x(:))), XTrain)) || any(isnan(YTrain(:))) || ...
+   any(cellfun(@(x) any(isnan(x(:))), XValidation)) || any(isnan(YValidation(:))) || ...
+   any(cellfun(@(x) any(isnan(x(:))), XTest)) || any(isnan(YTest(:)))
+    error('NaN values found in the data, clean the data before training.');
+end
 
 % Convert labels to categorical
 YTrain = categorical(YTrain);
 YValidation = categorical(YValidation);
 YTest = categorical(YTest);
 
-% Determine the minority class (now that YTrain is categorical)
-minorityClassCounts = countcats(YTrain);
-[~, minorityClassIdx] = min(minorityClassCounts);
-minorityClassLabel = categories(YTrain);
-minorityClass = minorityClassLabel(minorityClassIdx);
+% Determine the majority class size
+majorityClassSize = max(countcats(YTrain));
 
-% Find indices of the minority class
-minorityClassIndices = find(YTrain == minorityClass);
+% Initialize balanced training data
+balancedXTrain = cell(majorityClassSize * numel(categories(YTrain)), 1);
+balancedYTrain = categorical();
+counter = 1;
 
-% Define the number of oversamples
-numberOfOversamples = 200;
+for classLabel = categories(YTrain)'
+    classIndices = find(YTrain == classLabel{1});
+    resampledIndices = datasample(classIndices, majorityClassSize, 'Replace', true); % Oversample with replacement
+    balancedXTrain(counter:counter + majorityClassSize - 1) = XTrain(resampledIndices);
+    balancedYTrain(counter:counter + majorityClassSize - 1, 1) = YTrain(resampledIndices);
+    counter = counter + majorityClassSize;
+end
 
-% Randomly select indices from the minority class to oversample
-randomIndices = randi(numel(minorityClassIndices), 1, numberOfOversamples);
-
-% Get the oversampled data and labels
-oversampledMinorityData = XTrain(minorityClassIndices(randomIndices));
-oversampledMinorityLabels = YTrain(minorityClassIndices(randomIndices));
-
-% Concatenate the oversampled data to the original data
-XTrain = [XTrain, oversampledMinorityData];
-YTrain = [YTrain; oversampledMinorityLabels];
+% Shuffle the balanced training data
+randOrder = randperm(majorityClassSize * numel(categories(YTrain)));
+XTrain = balancedXTrain(randOrder);
+YTrain = balancedYTrain(randOrder);
 
 % Define model parameters
 inputSize = size(XTrain{1}, 1);
-numHiddenUnits = 200; 
+numHiddenUnits = 100; 
 numClasses = numel(categories(YTrain));
-numFeatures = size(XTrain{1}, 1);
-numSequences = size(XTrain{1}, 2);
 maxEpochs = 100;
 miniBatchSize = 20; 
-initialLearnRate = 0.05; 
-decay = 0.95;
-
-% Convert labels to categorical
-YTrain = categorical(YTrain);
-YValidation = categorical(YValidation);
-YTest = categorical(YTest);
+initialLearnRate = 0.02; 
+decay = 0.96;
 
 attentionLayer = AttentionLayer("Attention Layer", numHiddenUnits);
 
-disp('Formatting checks while loading...')
+disp('Formatting checks while loading...');
 disp('Number of Classes:');
 disp(numClasses);
 disp('Size of the first input sequence:');
@@ -67,7 +75,7 @@ layers = [
     fullyConnectedLayer(numClasses, 'Name','fc', 'WeightL2Factor', 0.001)
     softmaxLayer('Name','softmax')
     classificationLayer('Name','classification')];
-      
+
 analyzeNetwork(layers)
 
 epochsDrop = 1:maxEpochs;
@@ -88,7 +96,6 @@ options = trainingOptions('adam', ...
     'LearnRateDropPeriod',20, ...
     'InitialLearnRate',initialLearnRate, ...
     'ValidationPatience', inf);
-
 
 % Train the model
 net = trainNetwork(XTrain, YTrain, layers, options);
@@ -111,7 +118,10 @@ fprintf('Testing accuracy: %f\n', accuracy_test);
 % Create a confusion matrix for the test set
 figure
 cm = confusionmat(YTest, YPred_test);
-heatmap(cm);
+classNames = categories(YTest); % Assuming your labels are categorical and have proper names
+heatmap(cm, classNames, classNames, 1, 'Colormap', 'cool', ...
+        'Colorbar', true, 'ShowAllTicks', true, ...
+        'XLabel', 'Predicted', 'YLabel', 'Actual');
 title('Confusion Matrix for Test Data');
 
 % Print Precision, Recall, F1 Score for the test set
@@ -135,4 +145,39 @@ function [precision, recall, f1Score] = calculateMetrics(YTrue, YPred)
     precision = mean(tp ./ (tp + fp + 1e-10));
     recall = mean(tp ./ (tp + fn + 1e-10));
     f1Score = 2 * (precision * recall) / (precision + recall);
+end
+
+% Function to replace NaN values with the mean of non-NaN values for each feature
+function cellData = replaceNaNWithMean(cellData)
+    % Determine the size of the feature
+    featureSize = size(cellData{1}, 1);
+    
+    % Calculate the mean for each feature, ignoring NaN values
+    featureMeans = zeros(featureSize, 1);
+    for i = 1:featureSize
+        featureValues = cellfun(@(x) mean(x(i, 'omitnan')), cellData);
+        featureMeans(i) = mean(featureValues, 'omitnan');
+    end
+
+    % Replace NaN values with the corresponding feature mean
+    for i = 1:numel(cellData)
+        data = cellData{i};
+        for j = 1:featureSize
+            data(j, isnan(data(j, :))) = featureMeans(j);
+        end
+        cellData{i} = data;
+    end
+end
+
+function displayNaNLocations(cellData, dataName)
+    fprintf('Checking for NaN values in %s...\n', dataName);
+    for i = 1:numel(cellData)
+        data = cellData{i};
+        [rows, cols] = find(isnan(data));
+        if ~isempty(rows)
+            fprintf('NaN found in sequence %d at the following positions (row, col):\n', i);
+            disp([rows, cols]);
+        end
+    end
+    fprintf('Finished checking for NaN values in %s.\n', dataName);
 end
