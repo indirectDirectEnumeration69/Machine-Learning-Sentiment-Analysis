@@ -1,7 +1,7 @@
-% Loading the preprocessed data
+% Load the preprocessed data
 load('preprocessedData.mat');
 
-% Displaying NaN locations in the training, validation, and test data
+% Display NaN locations in the training, validation, and test data
 displayNaNLocations(XTrain, 'XTrain');
 displayNaNLocations(XValidation, 'XValidation');
 displayNaNLocations(XTest, 'XTest');
@@ -46,12 +46,12 @@ YTrain = balancedYTrain(randOrder);
 
 % Define model parameters
 inputSize = size(XTrain{1}, 1);
-numHiddenUnits = 100; 
+numHiddenUnits = 150; 
 numClasses = numel(categories(YTrain));
 maxEpochs = 100;
-miniBatchSize = 20; 
-initialLearnRate = 0.02; 
-decay = 0.96;
+miniBatchSize = 64; 
+initialLearnRate = 0.15; 
+decay = 0.70;
 
 attentionLayer = AttentionLayer("Attention Layer", numHiddenUnits);
 
@@ -67,14 +67,21 @@ disp(size(YTrain));
 layers = [
     sequenceInputLayer(inputSize, 'Name','input')
     bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm1')
+    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'gru1') % Add a new gru layer
     batchNormalizationLayer('Name','bn1')
-    dropoutLayer(0.4, 'Name','drop1')
-    bilstmLayer(numHiddenUnits, 'OutputMode','last', 'Name','bilstm2')
+    dropoutLayer(0.3, 'Name','drop1')
+    bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm2') % Add a new bilstm layer
+    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'gru2') % Add another new gru layer
     batchNormalizationLayer('Name','bn2')
-    dropoutLayer(0.4,'Name','drop2')
+    dropoutLayer(0.3,'Name','drop2')
+    bilstmLayer(numHiddenUnits, 'OutputMode','last', 'Name','bilstm3') % Make the last bilstm layer output only the last sequence
+    gruLayer(numHiddenUnits, 'OutputMode','last', 'Name','gru3') % Add a final gru layer
+    batchNormalizationLayer('Name','bn3')
+    dropoutLayer(0.1,'Name','drop3')
     fullyConnectedLayer(numClasses, 'Name','fc', 'WeightL2Factor', 0.001)
     softmaxLayer('Name','softmax')
     classificationLayer('Name','classification')];
+
 
 analyzeNetwork(layers)
 
@@ -93,7 +100,7 @@ options = trainingOptions('adam', ...
     'Shuffle','every-epoch', ...
     'LearnRateSchedule','piecewise', ...
     'LearnRateDropFactor', decay, ...
-    'LearnRateDropPeriod',20, ...
+    'LearnRateDropPeriod',8, ...
     'InitialLearnRate',initialLearnRate, ...
     'ValidationPatience', inf);
 
@@ -181,3 +188,5 @@ function displayNaNLocations(cellData, dataName)
     end
     fprintf('Finished checking for NaN values in %s.\n', dataName);
 end
+
+
