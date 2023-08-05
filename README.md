@@ -11,6 +11,7 @@ Notes:
 
 - improved model performance via optimisation of shuffling and using 20% of the dataset, also additional hyper parameter tuning.
 
+- majority and minority class sizes are now balanced and nan values dealt with through mean relation to non nan features.
 -----
 RNN Logic:
 
