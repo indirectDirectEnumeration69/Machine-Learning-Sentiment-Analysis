@@ -1,16 +1,15 @@
 # Machine-Learning-Sentiment-Analysis
 Machine Learning Sentiment Analysis Training, Tweets.
 
+ 
+Notes: 
 
+- need to add try and catch blocks for error handling if any errors occur.
+- Adding attention layer for new results and modifiying attention layer.
+- Using Gru layers and standard LSTM layers.
+- changing exponential learning decay rates for further analysis and   Learning Rate schedules, will further accomadate for over fitting and under fitting and majority biases.
 
------
-Sentiment Training Logic and functions:
-
--
--
--
-
-
+- improved model performance via optimisation of shuffling and using 20% of the dataset, also additional hyper parameter tuning.
 
 -----
 RNN Logic:
@@ -21,16 +20,12 @@ RNN Logic:
 -----
 Training results:
 
-
 -----
-Notes: 
+Sentiment Training Logic and functions:
 
-- need to add try and catch blocks for error handling if any errors occur.
-- Adding attention layer for new results and modifiying attention layer.
-- Using Gru layers and standard LSTM layers.
-- changing exponential learning decay rates for further analysis and   Learning Rate schedules, will further accomadate for over fitting and under fitting and majority biases.
-
-- improved model performance via optimisation of shuffling and using 20% of the dataset, also additional hyper parameter tuning.
+-
+-
+-
 
 -----
 
