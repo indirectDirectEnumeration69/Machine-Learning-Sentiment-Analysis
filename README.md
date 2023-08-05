@@ -32,6 +32,7 @@ Notes:
 
 - improved model performance via optimisation of shuffling and using 20% of the dataset, also additional hyper parameter tuning.
 
+-----
 
 Dataset url:
 
