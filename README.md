@@ -46,7 +46,7 @@ Positive & Negative words url:
 
 -----
 Requires:
-- minimum 15gb ram (16 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnables being used so less ram required however will affect result accuracy (wouldnt recommend decreasing learning rate below 0.1).
+- minimum 23.9gb ram (24 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnables being used so less ram required however will affect result accuracy (wouldnt recommend decreasing learning rate below 0.1).
 
 -
 -
