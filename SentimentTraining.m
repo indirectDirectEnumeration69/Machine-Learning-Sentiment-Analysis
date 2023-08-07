@@ -2,12 +2,11 @@
 filename = 'C:\Users\ernie\Downloads\test.csv'; %replace dataset file path with your own path location.
 data = readtable(filename, 'Delimiter', ',', 'VariableNamingRule', 'preserve'); %preserve to prevent matlabs formatting/modifying column names.
 
-% Shuffling the data for unbiased model results.
+% Shuffle the data
 data = data(randperm(height(data)), :);
 
-%(20% of the total data points) so quicker training and quicker defining
-%results for accuracy analysis.
-numDataPoints = round(height(data) * 0.20);
+% Determine the number of data points to take (10% of the total data points)
+numDataPoints = round(height(data) * 0.10);
 
 % Take the first numDataPoints from the shuffled data
 data = data(1:numDataPoints, :);
@@ -18,8 +17,7 @@ wordList = readtable(wordListFile, 'VariableNamingRule', 'preserve'); %preserve 
 positiveWords = string(wordList{:,3}); % Positive words are in the third column
 negativeWords = string(wordList{:,2}); % Negative words are in the second column
 
-% Extract necessary columns we need / of importance to our model training
-% use case.
+% Extract necessary columns
 data = data(:,{'textID','text','sentiment'}); % can include more for more data but im after the specific columns related to the text sentiment.
 
 % Encode sentiment as numerical values
@@ -191,7 +189,7 @@ function augmentedDocs = augmentData(docs, negativeWords, positiveWords)
         docTokens = string(docs(i).tokenDetails.Token);
         for j = 1:numel(docTokens)
             % Randomly choose whether to replace the word with a synonym
-            if rand() < 0.2 % 20% chance to replace the word to improve real world model results.
+            if rand() < 0.5 % 50% chance to replace the word to improve real world model results.
                 synonyms = getSynonyms(docTokens(j), negativeWords, positiveWords);
                 if ~isempty(synonyms)
                     % Replace the word with a randomly chosen synonym

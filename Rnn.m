@@ -46,14 +46,13 @@ YTrain = balancedYTrain(randOrder);
 
 % Define model parameters
 inputSize = size(XTrain{1}, 1);
-numHiddenUnits = 150; 
+numHiddenUnits = 200; 
 numClasses = numel(categories(YTrain));
 maxEpochs = 100;
-miniBatchSize = 64; 
-initialLearnRate = 0.15; 
-decay = 0.70;
-
-attentionLayer = AttentionLayer("Attention Layer", numHiddenUnits);
+fullBatchSize = numel(YTrain);
+miniBatchSize = fullBatchSize; 
+initialLearnRate = 0.1; 
+decay = 0.85;
 
 disp('Formatting checks while loading...');
 disp('Number of Classes:');
@@ -64,24 +63,18 @@ disp('Size of the YTrain:');
 disp(size(YTrain));
 
 % Define the network structure
+% Reduced dropouts for underfitting issue.
 layers = [
     sequenceInputLayer(inputSize, 'Name','input')
     bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm1')
-    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'gru1') % Add a new gru layer
     batchNormalizationLayer('Name','bn1')
-    dropoutLayer(0.3, 'Name','drop1')
     bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm2') % Add a new bilstm layer
-    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'gru2') % Add another new gru layer
     batchNormalizationLayer('Name','bn2')
-    dropoutLayer(0.3,'Name','drop2')
     bilstmLayer(numHiddenUnits, 'OutputMode','last', 'Name','bilstm3') % Make the last bilstm layer output only the last sequence
-    gruLayer(numHiddenUnits, 'OutputMode','last', 'Name','gru3') % Add a final gru layer
     batchNormalizationLayer('Name','bn3')
-    dropoutLayer(0.1,'Name','drop3')
     fullyConnectedLayer(numClasses, 'Name','fc', 'WeightL2Factor', 0.001)
     softmaxLayer('Name','softmax')
     classificationLayer('Name','classification')];
-
 
 analyzeNetwork(layers)
 
@@ -89,18 +82,18 @@ epochsDrop = 1:maxEpochs;
 learnRateDropFactor = decay;
 
 % Training options
-options = trainingOptions('adam', ...
+options = trainingOptions('sgdm', ...
     'ExecutionEnvironment','cpu', ...
     'MaxEpochs',maxEpochs, ...
     'MiniBatchSize',miniBatchSize, ...
     'Verbose',0, ...
     'Plots','training-progress', ...
     'ValidationData',{XValidation,YValidation}, ...
-    'ValidationFrequency',30, ...
+    'ValidationFrequency',2, ...
     'Shuffle','every-epoch', ...
     'LearnRateSchedule','piecewise', ...
     'LearnRateDropFactor', decay, ...
-    'LearnRateDropPeriod',8, ...
+    'LearnRateDropPeriod',7, ...
     'InitialLearnRate',initialLearnRate, ...
     'ValidationPatience', inf);
 
@@ -188,5 +181,6 @@ function displayNaNLocations(cellData, dataName)
     end
     fprintf('Finished checking for NaN values in %s.\n', dataName);
 end
+
 
 
