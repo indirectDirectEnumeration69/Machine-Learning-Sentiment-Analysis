@@ -21,6 +21,7 @@ Most Recent Update:
 - further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly and accuracy after the inital 18 epochs increasing from 30% to 60% after the 42nd epoch with stable accuracy momentum.
 
 training with 3 bilstm layers for first test, 2nd test with 3 gru layers, 3rd test with 3 standard lstm layers.
+
 -----
 RNN Logic:
 
