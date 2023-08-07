@@ -15,7 +15,7 @@ Notes:
 - prevented overfitting and underfitting taking into loss via learning rates due to undershooting optimal solutions and experiencing lower convergence.
 
 
-- further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly and accuracy after the inital 18 epochs increasing from 30% to 60% after the 42nd epoch with stable accuracy momentum.
+-- further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly and accuracy after the inital 18 epochs increasing from 30% to 60% after the 42nd epoch with stable accuracy momentum.
 -----
 RNN Logic:
 
