@@ -18,7 +18,7 @@ Notes:
 
 Most Recent Update: 
 ---
-- further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly with less fluctuations, escaping low non optimal local minima's and saddle points as shown by accuracy after the inital 18 epochs increasing from 30% to 60% after the 42nd epoch with stable accuracy momentum after the inital global minima point reached at the 18th epoch.
+- further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly with less fluctuations, escaping low non optimal local minima's and saddle points as shown by accuracy after the inital 18 epochs, increasing from 30% at the global minima point to 60% by the 42nd epoch with stable accuracy momentum after the inital global minima point reached at the 18th epoch.
 
 - training with 3 bilstm layers for first test, 2nd test with 3 gru layers, 3rd test with 3 standard lstm layers.
 
