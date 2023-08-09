@@ -1,4 +1,4 @@
-%Read CSV file
+%CSV file
 filename = 'C:\Users\ernie\Downloads\test.csv'; %replace dataset file path with your own path location.
 data = readtable(filename, 'Delimiter', ',', 'VariableNamingRule', 'preserve'); %preserve to prevent matlabs formatting/modifying column names.
 
