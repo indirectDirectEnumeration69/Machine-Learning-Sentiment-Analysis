@@ -100,6 +100,9 @@ options = trainingOptions('sgdm', ...
 % Train the model
 net = trainNetwork(XTrain, YTrain, layers, options);
 
+
+%requires alot of gpu memory.
+
 % Classify the training set and calculate accuracy
 YPred_train = classify(net, XTrain);
 accuracy_train = mean(YPred_train == YTrain);
@@ -118,7 +121,7 @@ fprintf('Testing accuracy: %f\n', accuracy_test);
 % Create a confusion matrix for the test set
 figure
 cm = confusionmat(YTest, YPred_test);
-classNames = categories(YTest); % Assuming your labels are categorical and have proper names
+classNames = categories(YTest); 
 heatmap(cm, classNames, classNames, 1, 'Colormap', 'cool', ...
         'Colorbar', true, 'ShowAllTicks', true, ...
         'XLabel', 'Predicted', 'YLabel', 'Actual');
