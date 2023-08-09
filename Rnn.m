@@ -1,7 +1,6 @@
-% Load the preprocessed data
 load('preprocessedData.mat');
 
-% Display NaN locations in the training, validation, and test data
+% Display NaN locations.
 displayNaNLocations(XTrain, 'XTrain');
 displayNaNLocations(XValidation, 'XValidation');
 displayNaNLocations(XTest, 'XTest');
@@ -11,22 +10,22 @@ XTrain = replaceNaNWithMean(XTrain);
 XValidation = replaceNaNWithMean(XValidation);
 XTest = replaceNaNWithMean(XTest);
 
-% Checking for NaN values in the data
+% Check NaN values in the data
 if any(cellfun(@(x) any(isnan(x(:))), XTrain)) || any(isnan(YTrain(:))) || ...
    any(cellfun(@(x) any(isnan(x(:))), XValidation)) || any(isnan(YValidation(:))) || ...
    any(cellfun(@(x) any(isnan(x(:))), XTest)) || any(isnan(YTest(:)))
     error('NaN values found in the data, clean the data before training.');
 end
 
-% Convert labels to categorical
+% labels to categorical
 YTrain = categorical(YTrain);
 YValidation = categorical(YValidation);
 YTest = categorical(YTest);
 
-% Determine the majority class size
+% majority class size
 majorityClassSize = max(countcats(YTrain));
 
-% Initialize balanced training data
+% balanced training data
 balancedXTrain = cell(majorityClassSize * numel(categories(YTrain)), 1);
 balancedYTrain = categorical();
 counter = 1;
@@ -44,7 +43,7 @@ randOrder = randperm(majorityClassSize * numel(categories(YTrain)));
 XTrain = balancedXTrain(randOrder);
 YTrain = balancedYTrain(randOrder);
 
-% Define model parameters
+% model parameters
 inputSize = size(XTrain{1}, 1);
 numHiddenUnits = 200; 
 numClasses = numel(categories(YTrain));
@@ -62,7 +61,6 @@ disp(size(XTrain{1}));
 disp('Size of the YTrain:');
 disp(size(YTrain));
 
-% Define the network structure
 % Reduced dropouts for underfitting issue.
 layers = [
     sequenceInputLayer(inputSize, 'Name','input')
@@ -81,7 +79,7 @@ analyzeNetwork(layers)
 epochsDrop = 1:maxEpochs;
 learnRateDropFactor = decay;
 
-% Training options
+% options
 options = trainingOptions('sgdm', ...
     'ExecutionEnvironment','cpu', ...
     'MaxEpochs',maxEpochs, ...
@@ -97,23 +95,22 @@ options = trainingOptions('sgdm', ...
     'InitialLearnRate',initialLearnRate, ...
     'ValidationPatience', inf);
 
-% Train the model
 net = trainNetwork(XTrain, YTrain, layers, options);
 
 
 %requires alot of gpu memory.
 
-% Classify the training set and calculate accuracy
+% training set and calculate accuracy
 YPred_train = classify(net, XTrain);
 accuracy_train = mean(YPred_train == YTrain);
 fprintf('Training accuracy: %f\n', accuracy_train);
 
-% Classify the validation set and calculate accuracy
+% validation set and calculate accuracy
 YPred_validation = classify(net, XValidation);
 accuracy_validation = mean(YPred_validation == YValidation);
 fprintf('Validation accuracy: %f\n', accuracy_validation);
 
-% Classify the testing set and calculate accuracy
+% testing set and calculate accuracy
 YPred_test = classify(net, XTest);
 accuracy_test = mean(YPred_test == YTest);
 fprintf('Testing accuracy: %f\n', accuracy_test);
@@ -131,7 +128,7 @@ title('Confusion Matrix for Test Data');
 [precision, recall, f1Score] = calculateMetrics(YTest, YPred_test);
 fprintf('Test Precision: %f, Recall: %f, F1 Score: %f\n', precision, recall, f1Score);
 
-% Define the function to calculate Precision, Recall, F1 Score
+% function to calculate Precision, Recall, F1 Score
 function [precision, recall, f1Score] = calculateMetrics(YTrue, YPred)
     % Convert categorical variables to numerical for calculations
     YTrue = grp2idx(YTrue);
@@ -162,7 +159,7 @@ function cellData = replaceNaNWithMean(cellData)
         featureMeans(i) = mean(featureValues, 'omitnan');
     end
 
-    % Replace NaN values with the corresponding feature mean
+    % replacing NaN values with the corresponding feature mean
     for i = 1:numel(cellData)
         data = cellData{i};
         for j = 1:featureSize
