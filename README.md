@@ -57,3 +57,4 @@ Matlabs Addon:
 
 - Deep Learning ToolBox
 - Text Analytics ToolBox
+- Statistics and Machine Learning Toolbox
