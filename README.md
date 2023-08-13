@@ -55,6 +55,5 @@ Requires:
 -----
 Matlabs Addon:
 
--
--
--
+- Deep Learning ToolBox
+- Text Analytics ToolBox
