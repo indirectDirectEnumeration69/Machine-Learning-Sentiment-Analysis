@@ -63,6 +63,7 @@ Model Layers:
 -----
 Training results:  
 
+- BGD allowed for increased learning and calibration of neurons in each layer.
 
 
 Result Conclusion : BiLSTM is better for SA tasks.
@@ -100,4 +101,3 @@ Issues
 --
 - BGD requires a lot of memory for visual analysis
 - GPU memory was limited when collecting other results than model validation and mean accuracy.
-- BGD allowed for increased learning and calibration of neurons in each layer.
