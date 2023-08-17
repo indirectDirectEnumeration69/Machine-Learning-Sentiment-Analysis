@@ -66,11 +66,11 @@ disp(size(YTrain));
 % Reduced dropouts for underfitting issue.
 layers = [
     sequenceInputLayer(inputSize, 'Name','input')
-    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bigru1')
+    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'gru1')
     batchNormalizationLayer('Name','bn1')
-    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bigru2') % Add a new bigru layer
+    gruLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'gru2') 
     batchNormalizationLayer('Name','bn2')
-    gruLayer(numHiddenUnits, 'OutputMode','last', 'Name','bigru3') % Make the last bigru layer output only the last sequence
+    gruLayer(numHiddenUnits, 'OutputMode','last', 'Name','gru3') % Make the last bigru layer output only the last sequence
     batchNormalizationLayer('Name','bn3')
     fullyConnectedLayer(numClasses, 'Name','fc', 'WeightL2Factor', 0.001)
     softmaxLayer('Name','softmax')
