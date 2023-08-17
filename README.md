@@ -93,7 +93,7 @@ https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resourc
 
 -----
 #### Requires:
-- minimum 23.9gb ram (24 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnable's being used so less ram is required however will affect result accuracy (wouldn't recommend decreasing learning rate below 0.1). Reduce batch size's as (2^n) for cpu/gpu computational efficency.
+- minimum 23.9gb ram (24 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnable's being used so less ram is required however will affect result accuracy (wouldn't recommend decreasing learning rate below 0.1). Reduce batch size's as (2^n) for cpu/gpu computational efficiency as remainders will create slow down and lack od datapoints.
 
 - MATLAB add-ons specified.
 -----
