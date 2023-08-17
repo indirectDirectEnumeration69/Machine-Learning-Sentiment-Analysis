@@ -25,9 +25,23 @@ Most Recent Update:
 -----
 RNN Logic:
 
+- 
 -
 -
--
+
+
+Model Layers: 
+---
+
+- LSTM :
+
+- GRU :
+
+
+- GRU-LSTM :
+
+
+- BiLSTM :
 -----
 Training results:  
 
