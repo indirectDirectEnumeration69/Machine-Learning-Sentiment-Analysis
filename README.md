@@ -33,15 +33,15 @@ RNN Logic:
 Model Layers: 
 ---
 
-- LSTM :
+- LSTM : layers[]
 
-- GRU :
-
-
-- GRU-LSTM :
+- GRU : layers[]
 
 
-- BiLSTM :
+- GRU-LSTM : layers[]
+
+
+- BiLSTM : layers[]
 -----
 Training results:  
 
