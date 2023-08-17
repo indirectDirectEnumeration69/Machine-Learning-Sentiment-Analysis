@@ -25,7 +25,7 @@ Most Recent Update:
 Future Updates:
 ----
 - need to create custom scaledotproduct attention layer.
-- need to dynamic training loop for further optimised training compared to Adam or sgd.
+- need to dynamic training loop for further optimised training compared to Adam or sgdm.
 
 -----
 RNN Logic:
