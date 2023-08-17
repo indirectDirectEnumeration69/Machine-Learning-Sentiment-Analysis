@@ -40,10 +40,11 @@ Sentiment Training Logic and functions:
 
 -----
 
-Dataset url:
+Dataset url: https://www.kaggle.com/datasets/mukulkirti/positive-and-negative-word-listrar
 
 
-Positive & Negative words url:
+Positive & Negative words url: 
+https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resource=download&select=test.csv 
 
 
 -----
