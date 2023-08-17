@@ -12,7 +12,7 @@ Notes:
 - improved model performance via optimisation of shuffling and using 20% of the dataset, also additional hyper parameter tuning.
 
 - majority and minority class sizes are now balanced and nan values dealt with through mean relation to non nan features.
-- prevented overfitting and underfitting taking into loss via learning rates due to undershooting optimal solutions and experiencing lower convergence.
+- prevented overfitting and underfitting taking into account loss via learning rates due to undershooting optimal solutions and experiencing lower convergence.
 
 
 
