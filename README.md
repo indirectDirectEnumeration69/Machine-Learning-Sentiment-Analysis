@@ -16,13 +16,16 @@ Notes:
 
 - removed dropout layers to prevent underfitting.
 
-
-
 Most Recent Update: 
 ---
 - further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly with less fluctuations, escaping low non optimal local minima's and saddle points as shown by accuracy after the inital 18 epochs, increasing from 20% at the global minima point to 60% by the 42nd epoch with stable accuracy momentum after the inital global minima point reached at the 18th epoch.
 
 - training with 3 bilstm layers for first test, 2nd test with 3 gru layers, 3rd test with 3 standard lstm layers.
+
+Future Updates:
+----
+- need to create custom scaledotproduct attention layer.
+- need to dynamic training loop for further optimised training compared to Adam or sgd.
 
 -----
 RNN Logic:
