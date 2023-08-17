@@ -25,7 +25,7 @@ Most Recent Update:
 Future Implementation:
 ----
 - need to create custom dot product attention layer.
-- need to dynamic training loop for further optimised training compared to Adam or sgdm.
+- need to create dynamic training loop for further optimised training compared to Adam or sgdm.
 
 -----
 RNN Logic:
