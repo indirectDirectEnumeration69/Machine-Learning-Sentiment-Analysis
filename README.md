@@ -3,7 +3,7 @@ Machine Learning Sentiment Analysis Training, Tweets.
 
  
 
-User Importance notice
+User notice
 --
 
 - (1st) Run sentiment analysis script first.
