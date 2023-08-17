@@ -2,7 +2,7 @@
 Machine Learning Sentiment Analysis Training, Tweets.
 
 #### Author: 
-- *Ernest James Howlett(w21024244).* 
+- *Ernest James Howlett (w21024244).* 
 
 #### User Notice:
 
