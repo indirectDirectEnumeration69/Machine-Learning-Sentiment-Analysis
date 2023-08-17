@@ -75,7 +75,7 @@ positiveCounts = positiveCounts(:)';  % transpose positiveCounts to a row vector
 negativeCounts = negativeCounts(:)';  % transpose negativeCounts to a row vector
 
 % Convert tokenizedDocument to sequences of word vectors
-cellDocuments = tokenizedDocument2CellArray(documents); %uses documents from line 22 converting it and returning as i have it currently for original document as a cell array which it already is, using both the original document which is less manipulated and with the additional 
+cellDocuments = tokenizedDocument2CellArray(documents); %uses documents from line 22 converting it and returning currently for original document as a cell array which it already is (for further development), using both the original document which is less manipulated and with the additional 
 sequences = cellfun(@(c) word2index(emb, c), cellDocuments, 'UniformOutput', false); %documentscellarray which contains additional features and is more heavily modified compared to original document variable in line 22 such as using (ngrams,td-idf) in documentscellarray var
                                                                                       % for model to evaluate within the sequences variable between original less modified version and the more modified version.
 
