@@ -63,7 +63,7 @@ Model Layers:
 -----
 Training results:  
 
-- BGD allowed for increased learning and calibration of neurons in each layer.
+- BGD allowed for increased learning and calibration of neurons in each layer due to familiarity of batch data .
 
 
 Result Conclusion : BiLSTM is better for SA tasks.
