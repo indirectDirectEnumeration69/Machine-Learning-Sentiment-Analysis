@@ -29,7 +29,11 @@ RNN Logic:
 -
 -
 -----
-Training results:
+Training results:  
+
+
+
+Result Conclusion : BiLSTM is better for SA tasks.
 
 -----
 Sentiment Training Logic and functions:
