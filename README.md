@@ -24,7 +24,7 @@ Most Recent Update:
 
 Future Implementation:
 ----
-- need to create custom scaledotproduct attention layer.
+- need to create custom dot product attention layer.
 - need to dynamic training loop for further optimised training compared to Adam or sgdm.
 
 -----
