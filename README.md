@@ -1,10 +1,10 @@
 # Machine-Learning-Sentiment-Analysis
 Machine Learning Sentiment Analysis Training, Tweets.
 
-Author: 
+#### Author: 
 - *Ernest James Howlett(w21024244).* 
 
-User notice
+## User notice
 --
 
 - (1st) Run sentiment analysis script first.
@@ -15,7 +15,7 @@ User notice
 
 ---------
 
-### Notes: 
+## Notes: 
 
 - need to add try and catch blocks for error handling if any errors occur.
 - Adding attention layer for new results and modifiying attention layer.
@@ -99,6 +99,6 @@ https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resourc
 
 ------
 
-### Issues
+### Issues:
 - BGD requires a lot of memory for visual analysis
 - GPU memory was limited when collecting other results than model validation and mean accuracy.
