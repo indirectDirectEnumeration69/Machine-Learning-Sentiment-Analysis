@@ -84,10 +84,10 @@ Machine Learning Sentiment Analysis Training, Tweets.
 #### Datasets Used for Training: 
 
 
-Dataset url: https://www.kaggle.com/datasets/mukulkirti/positive-and-negative-word-listrar
+- Dataset url: https://www.kaggle.com/datasets/mukulkirti/positive-and-negative-word-listrar
 
 
-Positive & Negative words url: 
+- Positive & Negative words url: 
 https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resource=download&select=test.csv 
 
 
