@@ -4,7 +4,7 @@ Machine Learning Sentiment Analysis Training, Tweets.
 #### Author: 
 - *Ernest James Howlett(w21024244).* 
 
-## User notice:
+#### User notice:
 
 - (1st) Run sentiment analysis script first.
 - (2nd) Once Preprocessing has finished run Model scripts.
