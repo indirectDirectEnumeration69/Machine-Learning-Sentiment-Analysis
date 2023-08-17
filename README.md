@@ -66,7 +66,7 @@ Machine Learning Sentiment Analysis Training, Tweets.
 
 ##### Training results:  
 
-- BGD allowed for increased learning and calibration of neurons in each layer due to familiarity of batch data .
+- BGD allowed for increased learning and calibration of neurons in each layer due to familiarity of batch data.
 
 
 ### Result Conclusion : 
