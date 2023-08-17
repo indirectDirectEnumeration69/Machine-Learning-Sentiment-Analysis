@@ -15,7 +15,7 @@ User notice
 
 ---------
 
-###Notes: 
+### Notes: 
 
 - need to add try and catch blocks for error handling if any errors occur.
 - Adding attention layer for new results and modifiying attention layer.
