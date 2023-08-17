@@ -97,7 +97,8 @@ https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resourc
 - Text Analytics ToolBox
 - Statistics and Machine Learning Toolbox
 
------
+------
+
 ### Issues
 - BGD requires a lot of memory for visual analysis
 - GPU memory was limited when collecting other results than model validation and mean accuracy.
