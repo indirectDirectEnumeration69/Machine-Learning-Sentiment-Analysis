@@ -108,6 +108,6 @@ https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resourc
 ### Issues:
 - BGD requires a lot of memory for visual analysis
 - GPU memory was limited when collecting other results than model validation and mean accuracy.
-- loss stagnation for models which are not BiLSTM (possibly due to learning rates needing adjustment due to difference in model complexity).
+- loss stagnation for models which are not BiLSTM (possibly due to learning rates needing adjustment due to difference in model complexity and overfitting for less layers).
 ----
 
