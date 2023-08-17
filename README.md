@@ -9,7 +9,7 @@ User notice
 - (1st) Run sentiment analysis script first.
 - (2nd) Once Preprocessing has finished run Model scripts.
 
-* Also remember to change file paths with where the dataset files reside.
+ [Also remember to change file paths with where the dataset files reside.]
 
 
 ---------
