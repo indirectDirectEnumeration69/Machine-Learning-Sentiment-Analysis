@@ -82,3 +82,8 @@ Matlabs Addon:
 - Deep Learning ToolBox
 - Text Analytics ToolBox
 - Statistics and Machine Learning Toolbox
+
+
+Issues
+--
+- BGD requires alot of memory for visual analysis
