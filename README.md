@@ -69,7 +69,9 @@ Machine Learning Sentiment Analysis Training, Tweets.
 - BGD allowed for increased learning and calibration of neurons in each layer due to familiarity of batch data .
 
 
-Result Conclusion : BiLSTM is better for SA tasks.
+### Result Conclusion : 
+
+- BiLSTM is better for SA tasks.
 
 -----
 #### Sentiment Training Logic and functions:
