@@ -68,7 +68,7 @@ layers = [
     sequenceInputLayer(inputSize, 'Name','input')
     bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm1')
     batchNormalizationLayer('Name','bn1')
-    bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm2') % Add a new bilstm layer
+    bilstmLayer(numHiddenUnits, 'OutputMode', 'sequence', 'Name', 'bilstm2') 
     batchNormalizationLayer('Name','bn2')
     bilstmLayer(numHiddenUnits, 'OutputMode','last', 'Name','bilstm3') % Make the last bilstm layer output only the last sequence
     batchNormalizationLayer('Name','bn3')
