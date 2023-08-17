@@ -27,15 +27,17 @@ Machine Learning Sentiment Analysis Training, Tweets.
 - prevented overfitting and underfitting taking into account loss via learning rates due to undershooting optimal solutions and experiencing lower convergence.
 
 - removed dropout layers to prevent underfitting.
+----
 
 #### Most Recent Update: 
----
+
 - further reduced underfitting and now using sgdm with batch gradient descent to now have the model working correctly with less fluctuations, escaping low non optimal local minima's and saddle points as shown by accuracy after the inital 18 epochs, increasing from 20% at the global minima point to 60% by the 42nd epoch with stable accuracy momentum after the inital global minima point reached at the 18th epoch.
 
 - training with 3 bilstm layers for first test, 2nd test with 3 gru layers, 3rd test with 3 standard lstm layers.
+----
 
 #### Future Implementation:
-----
+
 - need to create custom dot product attention layer.
 - need to create dynamic training loop for further optimised training compared to Adam or sgdm.
 - need to use pretrained model training data for further training. 
@@ -47,9 +49,9 @@ Machine Learning Sentiment Analysis Training, Tweets.
 -
 -
 
-
+----
 ##### Model Layers: 
----
+
 
 - LSTM : layers[]
 
@@ -61,6 +63,7 @@ Machine Learning Sentiment Analysis Training, Tweets.
 
 - BiLSTM : layers[]
 -----
+
 ##### Training results:  
 
 - BGD allowed for increased learning and calibration of neurons in each layer due to familiarity of batch data .
