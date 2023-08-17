@@ -1,7 +1,8 @@
 # Machine-Learning-Sentiment-Analysis
 Machine Learning Sentiment Analysis Training, Tweets.
 
- 
+Author: 
+- Ernest James Howlett(w21024244). 
 
 User notice
 --
