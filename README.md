@@ -11,6 +11,9 @@ User Importance notice
 
 Also remember to change file paths with where the program files reside.
 
+
+---------
+
 Notes: 
 
 - need to add try and catch blocks for error handling if any errors occur.
