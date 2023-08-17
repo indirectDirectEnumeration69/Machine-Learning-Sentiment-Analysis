@@ -14,6 +14,8 @@ Notes:
 - majority and minority class sizes are now balanced and nan values dealt with through mean relation to non nan features.
 - prevented overfitting and underfitting taking into account loss via learning rates due to undershooting optimal solutions and experiencing lower convergence.
 
+- removed dropout layers to prevent underfitting.
+
 
 
 Most Recent Update: 
