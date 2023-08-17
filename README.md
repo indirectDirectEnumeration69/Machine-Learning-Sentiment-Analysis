@@ -99,6 +99,6 @@ https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resourc
 
 
 ### Issues
---
+----
 - BGD requires a lot of memory for visual analysis
 - GPU memory was limited when collecting other results than model validation and mean accuracy.
