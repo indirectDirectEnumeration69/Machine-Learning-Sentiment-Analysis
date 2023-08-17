@@ -22,7 +22,7 @@ Most Recent Update:
 
 - training with 3 bilstm layers for first test, 2nd test with 3 gru layers, 3rd test with 3 standard lstm layers.
 
-Future Updates:
+Future Implementation:
 ----
 - need to create custom scaledotproduct attention layer.
 - need to dynamic training loop for further optimised training compared to Adam or sgdm.
