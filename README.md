@@ -85,11 +85,11 @@ https://www.kaggle.com/datasets/abhi8923shriv/sentiment-analysis-dataset?resourc
 
 -----
 Requires:
-- minimum 23.9gb ram (24 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnables being used so less ram required however will affect result accuracy (wouldnt recommend decreasing learning rate below 0.1).
+- minimum 23.9gb ram (24 gb of ram preferable) could try reducing hidden units and Initial learning rate so less learnable's being used so less ram is required however will affect result accuracy (wouldn't recommend decreasing learning rate below 0.1).
 
-- MATLAB addons specified.
+- MATLAB add-ons specified.
 -----
-Matlabs Addon:
+Matlab Addon:
 
 - Deep Learning ToolBox
 - Text Analytics ToolBox
@@ -98,4 +98,6 @@ Matlabs Addon:
 
 Issues
 --
-- BGD requires alot of memory for visual analysis
+- BGD requires a lot of memory for visual analysis
+- GPU memory was limited when collecting other results than model validation and mean accuracy.
+- BGD allowed for increased learning and calibration of neurons in each layer.
