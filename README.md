@@ -64,7 +64,7 @@ Machine Learning Sentiment Analysis Training, Tweets.
 - BiLSTM : layers[]
 -----
 
-##### Training results:  
+#### Training results:  
 
 - BGD allowed for increased learning and calibration of neurons in each layer due to batch data familiarity.
 
